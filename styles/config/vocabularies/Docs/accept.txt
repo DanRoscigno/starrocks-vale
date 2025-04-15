@@ -29,4 +29,5 @@ FEs
 '[Aa]d hoc'
 DBeaver
 Stream Load
+MinIO
 
