@@ -1,8 +1,0 @@
-extends: existence
-message: Rule names should not start with '%s'
-level: error
-ignorecase: false
-tokens:
-  - A
-  - An
-  - The
