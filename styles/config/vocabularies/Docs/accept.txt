@@ -1,0 +1,29 @@
+StarRocks
+lakehouse
+CelerData Cloud
+Onehouse
+GRANT
+grant
+LOAD
+load
+nullable
+backend
+Broker Load
+HDFS
+OLAP
+PUT
+put
+curl
+SQL
+GET
+get
+CBO
+SQL
+Paimon
+Hudi
+NVMe
+(?i)BE
+FE
+BEs
+FEs
+'[Aa]d hoc'
