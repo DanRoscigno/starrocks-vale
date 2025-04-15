@@ -27,3 +27,4 @@ FE
 BEs
 FEs
 '[Aa]d hoc'
+DBeaver
