@@ -5,7 +5,7 @@ Onehouse
 GRANT
 grant
 LOAD
-load
+[lL]oad
 nullable
 backend
 Broker Load
