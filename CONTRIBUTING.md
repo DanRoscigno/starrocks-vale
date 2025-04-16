@@ -1,35 +1,73 @@
 # Contributing
 
-First of all, thanks for contributing! This document provides some basic guidelines for contributing to this repository. To propose improvements, feel free to submit a pull request.
+Thanks! There are three main ways to contribute to the documentation linting process:
 
-## Opening issues
+- Adding custom words to the "accept list" – product names, industry specific terms, etc.
+- Turning off rules that we use
+- Adding new rules (not covered here, see the [Vale docs][1])
 
-GitHub issues are welcome, so feel free to open an issue about an existing style rule. Make sure to add enough details and examples to explain your use case clearly.
+## Adding to the "accept list"
 
-For example, if you'd like the [`words.yml` rule][7] to flag on the word "Dirrty", open an [issue][8] and include a justification in the description such as, "Dirrty is the name of a 2002 Christina Aguilera song from her album _Stripped_. If an instance of "Dirrty" appears in the documentation, it is most likely a typo." 
+The `vale.ini` file references a vocabulary:
 
-Are you having an issue with the Datadog product? Contact [Datadog Support][1].
+```ini
+Vocab = Docs
+```
 
-## Submitting rules
+There is also a comment in the file explaining the `Vocab` line, as there was a breaking change in the directory structure between Vale 2.x and 3.x:
 
-Are you interested in contributing your team's product-specific terminology and vocabulary to the [Documentation Site Style Guide][2]? 
+```bash
+# Vocab: in the styles/config/vocabularies/Docs/ dir are an accept.txt
+# and (optionally) a reject.txt for custom spelling.
+# For example, StarRocks is a custom word, and when this
+# Vale configuration is used misspellings like Starrocks (lower case `r`)
+# are flagged. The Vale style is required to use `Vocab`
+```
+Add words or phrases that are correct for us to the file 
+`styles/config/vocabularies/Docs/accept.txt`.
 
-1. Create a folder such as `[Product Name]-Names` and add it to the [`Styles/Datadog` folder][4].
-2. Update the [CODEOWNERS file][5] with your team's GitHub handle.
-3. Update the `StylesPath` to point to the appropriate directory in your team repository's [`.vale.ini` file][6].
+Here is an example using the current rules:
 
-In order to ease and speed up our review, here are some items you can check for when submitting your pull request:
+```bash
+351:1  error   Use 'load' instead of 'Load'.   Vale.Terms
+```
 
-- Keep commits small and focused, and rebase your branch if needed.
-- Write meaningful commit messages and pull request titles that are concise but explanatory.
+The line this error refers to is:
 
-If you are a Datadog employee, share your pull request in #documentation and a writer on the team will take a look. 
+```md
+Load the weather dataset in the same manner as you loaded the crash data.
+```
+Obviously, `Load` is correct as it is the first word of the sentence. The problem was caused by having these entries in `accept.txt`
 
-[1]: https://docs.datadoghq.com/help/
-[2]: https://github.com/DataDog/documentation/blob/master/CONTRIBUTING.md
-[3]: https://github.com/DataDog/datadog-vale/blob/main/Docsmd/gender.yml
-[4]: https://github.com/DataDog/datadog-vale/tree/main/styles/Datadog
-[5]: https://github.com/DataDog/datadog-vale/blob/main/.github/CODEOWNERS
-[6]: https://github.com/DataDog/documentation/blob/master/.vale.ini
-[7]: https://github.com/DataDog/datadog-vale/blob/main/styles/Datadog/words.yml
-[8]: https://github.com/DataDog/datadog-vale/issues
+```bash
+LOAD
+load
+```
+
+Fixing this is easy, we can replace the above with:
+
+```bash
+LOAD
+[lL]oad
+```
+
+> Note
+>
+> This is an uncommon error, it came about because in some instances we need `LOAD` and in others `load`, so both were added to `accept.txt`. This left `Load` as an exception to the rules.
+
+## Turn a rule off
+
+Some of Google's rules may not agree with the way that we write. Sometimes we should change the way that we write, and sometimes we should turn off a rule. In the `styles/Google/` directory are several rule files. These rules can be turned on and off individually by editing `vale.ini`. Here are some rules that are turned off currently:
+
+```ini
+# Rules to turn off
+Google.Parens = NO
+Google.Headings = NO
+Google.Will = NO
+Google.We = NO
+Google.Ranges = NO
+Google.Passive = NO
+Google.Contractions = NO
+```
+
+[1]: https://vale.sh/docs
