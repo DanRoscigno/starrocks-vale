@@ -30,4 +30,6 @@ FEs
 DBeaver
 Stream Load
 MinIO
-
+Algolia
+DocSearch
+Docusaurus
