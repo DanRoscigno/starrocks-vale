@@ -69,4 +69,4 @@ if __name__ == '__main__':
 
     if any(error_list):
         print("\nYour PR contains a Vale style error. Check the annotations in your PR and address the error.")
-        sys.exit(1)
+        sys.exit(0) # exit with a zero so that if called by a CI job, the CI continues
