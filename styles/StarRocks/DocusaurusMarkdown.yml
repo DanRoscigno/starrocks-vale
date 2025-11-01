@@ -1,0 +1,9 @@
+extends: existence
+message: "Use Docusaurus admonitions (:::note, :::tip, :::warning, :::caution, :::important) instead of blockquote NOTE/TIP/etc."
+level: error
+scope: raw
+ignorecase: true
+nonword: true
+link: https://docusaurus.io/docs/markdown-features/admonitions
+raw:
+  - '(?m)>[ \t]*\*\*(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\*\*'

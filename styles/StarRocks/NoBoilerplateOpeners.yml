@@ -1,0 +1,6 @@
+extends: existence
+message: "Tell the reader why the feature is wonderful. Instead of 'This article...' Say something like '<Feature name> improves query speed and memory use by...'."
+ignorecase: false
+level: error
+tokens:
+  - 'This article'

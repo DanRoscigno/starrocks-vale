@@ -1,4 +1,5 @@
 StarRocks
+Flink
 lakehouse
 CelerData Cloud
 Onehouse
@@ -11,12 +12,10 @@ backend
 Broker Load
 HDFS
 OLAP
-PUT
-put
+(?i)PUT
 curl
 SQL
-GET
-get
+(?i)GET
 CBO
 SQL
 Paimon
@@ -28,7 +27,7 @@ BEs
 FEs
 '[Aa]d hoc'
 DBeaver
-Stream Load
+(?i)STREAM LOAD
 MinIO
 Algolia
 DocSearch
