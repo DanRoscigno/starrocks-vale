@@ -1,0 +1,8 @@
+extends: existence
+message: "A Description or Overview heading is not usually needed, instead write about the feature. Never use a Description heading immediately after the page title, as this kills SEO"
+ignorecase: false
+scope: raw
+level: warning
+tokens:
+    - ## Description
+    - ## Overview
